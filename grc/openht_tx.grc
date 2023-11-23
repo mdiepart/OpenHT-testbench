@@ -165,44 +165,6 @@ blocks:
     coordinate: [184, 12.0]
     rotation: 0
     state: enabled
-- name: taps_1
-  id: variable
-  parameters:
-    comment: ''
-    value: scisig.remez(N1, [0, 3800, 4200, samp_rate*interp_1/2], [1.0, 0], fs=samp_rate*interp_1)
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [296, 124.0]
-    rotation: 0
-    state: true
-- name: taps_2
-  id: variable
-  parameters:
-    comment: ''
-    value: scisig.remez(N2, [0, 4400, 10000, samp_rate*interp_1*interp_2/2], [1.0,
-      0], fs=samp_rate*interp_1*interp_2)
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [632, 124.0]
-    rotation: 0
-    state: true
-- name: taps_3
-  id: variable
-  parameters:
-    comment: ''
-    value: scisig.remez(N3, [0, 4400, 30000, samp_rate*interp_1*interp_2*interp_3/2],
-      [1.0, 0], fs=samp_rate*interp_1*interp_2*interp_3)
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [968, 124.0]
-    rotation: 0
-    state: true
 - name: analog_const_source_x_0
   id: analog_const_source_x
   parameters:
@@ -405,7 +367,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_delay: '0'
-    taps: taps_1
+    taps: scisig.remez(N1, [0, 3800, 4200, samp_rate*interp_1/2], [1.0, 0], fs=samp_rate*interp_1)
     type: fff
   states:
     bus_sink: false
@@ -424,7 +386,8 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_delay: '0'
-    taps: taps_2
+    taps: scisig.remez(N2, [0, 4400, 10000, samp_rate*interp_1*interp_2/2], [1.0,
+      0], fs=samp_rate*interp_1*interp_2)
     type: fff
   states:
     bus_sink: false
@@ -443,7 +406,8 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_delay: '0'
-    taps: taps_3
+    taps: scisig.remez(N3, [0, 4400, 30000, samp_rate*interp_1*interp_2*interp_3/2],
+      [1.0, 0], fs=samp_rate*interp_1*interp_2*interp_3)
     type: fff
   states:
     bus_sink: false
@@ -809,7 +773,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1304, 68.0]
+    coordinate: [1304, 28.0]
     rotation: 0
     state: disabled
 - name: qtgui_time_sink_x_1
