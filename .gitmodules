@@ -1,0 +1,5 @@
+[submodule "fpga_src"]
+	path = fpga_src
+	url = https://github.com/M17-Project/OpenHT-fpga.git
+	branch = fir-rework
+

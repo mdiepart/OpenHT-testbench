@@ -1,1 +1,7 @@
 /grc/*.py
+.ipynb_checkpoints
+bitstream
+/vivado/OpenHT_testbench/*
+!/vivado/OpenHT_testbench/OpenHT_testbench.xpr
+!vivado/OpenHT_testbench/OpenHT_testbench.srcs
+

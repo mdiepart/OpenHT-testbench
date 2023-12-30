@@ -1,0 +1,25 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-1078,-263",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port AXI4_LITE -pg 1 -lvl 0 -x 0 -y 30 -defaultsOSRD
+preplace port S_AXIS -pg 1 -lvl 0 -x 0 -y 230 -defaultsOSRD
+preplace port port-id_s_axis_aclk -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace port port-id_s_axis_aresetn -pg 1 -lvl 0 -x 0 -y 90 -defaultsOSRD
+preplace inst tx_axi_apb_bridge -pg 1 -lvl 1 -x 150 -y 70 -defaultsOSRD
+preplace inst tx_axis_data_fifo -pg 1 -lvl 1 -x 150 -y 250 -defaultsOSRD
+preplace inst tx_fifo2apb_0 -pg 1 -lvl 2 -x 370 -y 140 -defaultsOSRD
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 2 20 150 NJ
+preplace netloc rst_cpu0_125M_peripheral_aresetn 1 0 2 30 170 NJ
+preplace netloc axi_apb_bridge_1_APB_M 1 1 1 270 70n
+preplace netloc axis_data_fifo_0_M_AXIS 1 1 1 270 130n
+preplace netloc cpu0_axi_periph_M02_AXI 1 0 1 20J 30n
+preplace netloc openht_wrapper_0_tx_axis 1 0 1 NJ 230
+levelinfo -pg 1 0 150 370 470
+pagesize -pg 1 -db -bbox -sgen -150 -10 470 330
+"
+}
+
