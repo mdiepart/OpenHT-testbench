@@ -397,7 +397,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_delay: '0'
-    taps: scisig.remez(N1, [0, 3800, 4200, samp_rate*interp_1/2], [1.0, 0], fs=samp_rate*interp_1)
+    taps: scisig.remez(N1, [0, 3800, 4200, samp_rate/2], [1.0, 0], fs=samp_rate)
     type: fff
   states:
     bus_sink: false
