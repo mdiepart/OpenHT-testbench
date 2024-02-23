@@ -78,7 +78,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [856, 284.0]
+    coordinate: [856, 292.0]
     rotation: 0
     state: enabled
 - name: fm_dev
@@ -97,12 +97,12 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '5'
+    value: '25'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [728, 284.0]
+    coordinate: [728, 292.0]
     rotation: 0
     state: enabled
 - name: gain_2
@@ -239,7 +239,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: interp_1
+    const: gain_1
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -416,8 +416,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_delay: '0'
-    taps: scisig.remez(N2, [0, 4400, 10000, samp_rate*interp_1*interp_2/2], [1.0,
-      0], fs=samp_rate*interp_1*interp_2)
+    taps: scisig.remez(N2, [0, 4400, 10000, samp_rate*interp_1/2], [1.0, 0], fs=samp_rate*interp_1)
     type: fff
   states:
     bus_sink: false
@@ -436,8 +435,8 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_delay: '0'
-    taps: scisig.remez(N3, [0, 4400, 30000, samp_rate*interp_1*interp_2*interp_3/2],
-      [1.0, 0], fs=samp_rate*interp_1*interp_2*interp_3)
+    taps: scisig.remez(N3, [0, 4400, 30000, samp_rate*interp_1*interp_2/2], [1.0,
+      0], fs=samp_rate*interp_1*interp_2)
     type: fff
   states:
     bus_sink: false
@@ -578,7 +577,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1904, 420.0]
+    coordinate: [2032, 436.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -907,9 +906,9 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    decim: '25'
+    decim: '50'
     fbw: '0'
-    interp: '3'
+    interp: '6'
     maxoutbuf: '0'
     minoutbuf: '0'
     taps: ''
@@ -918,7 +917,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1496, 420.0]
+    coordinate: [1656, 436.0]
     rotation: 0
     state: true
 - name: root_raised_cosine_filter_0
@@ -964,7 +963,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1696, 404.0]
+    coordinate: [1824, 420.0]
     rotation: 0
     state: enabled
 
