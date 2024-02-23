@@ -232,7 +232,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_delay: '0'
-    taps: scisig.remez(N2, [0, 6.25e3, 6.5e3, samp_rate/decim_1/decim_2/2], [1.0,
+    taps: scisig.remez(N3, [0, 6.25e3, 6.5e3, samp_rate/decim_1/decim_2/2], [1.0,
       0], fs=samp_rate/decim_1/decim_2)
     type: ccc
   states:
