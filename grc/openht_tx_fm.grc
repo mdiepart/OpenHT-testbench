@@ -73,7 +73,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '5000'
+    value: 5e3
   states:
     bus_sink: false
     bus_source: false
@@ -197,7 +197,7 @@ blocks:
     bus_structure: null
     coordinate: [1304, 204.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: analog_noise_source_x_0
   id: analog_noise_source_x
   parameters:
@@ -328,9 +328,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1472, 196.0]
+    coordinate: [1536, 300.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: import_0
   id: import
   parameters:
@@ -357,25 +357,6 @@ blocks:
     coordinate: [376, 12.0]
     rotation: 0
     state: enabled
-- name: interp_fir_filter_xxx_0
-  id: interp_fir_filter_xxx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    interp: interp_1
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    samp_delay: '0'
-    taps: scisig.remez(N1, [0, 3800, 4200, samp_rate*interp_1/2], [1.0, 0], fs=samp_rate*interp_1)
-    type: fff
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [296, 196.0]
-    rotation: 0
-    state: enabled
 - name: interp_fir_filter_xxx_0_0
   id: interp_fir_filter_xxx
   parameters:
@@ -386,8 +367,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_delay: '0'
-    taps: scisig.remez(N2, [0, 4400, 10000, samp_rate*interp_1*interp_2/2], [1.0,
-      0], fs=samp_rate*interp_1*interp_2)
+    taps: scisig.remez(N2, [0, 3000, 5000, samp_rate*interp_1/2], [1.0, 0], fs=samp_rate*interp_1)
     type: fff
   states:
     bus_sink: false
@@ -406,14 +386,33 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_delay: '0'
-    taps: scisig.remez(N3, [0, 4400, 30000, samp_rate*interp_1*interp_2*interp_3/2],
-      [1.0, 0], fs=samp_rate*interp_1*interp_2*interp_3)
+    taps: scisig.remez(N3, [0, 80e3, 90e3, samp_rate*interp_1*interp_2/2], [1.0, 0],
+      fs=samp_rate*interp_1*interp_2)
     type: fff
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [968, 196.0]
+    rotation: 0
+    state: enabled
+- name: interp_fir_filter_xxx_0_2
+  id: interp_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    interp: interp_1
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_delay: '0'
+    taps: scisig.remez(N1, [0, 3300, 3900, samp_rate*interp_1/2], [1.0, 0], fs=samp_rate*interp_1)
+    type: fff
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [296, 196.0]
     rotation: 0
     state: enabled
 - name: network_udp_sink_0
@@ -433,9 +432,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1656, 276.0]
+    coordinate: [1688, 276.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: qtgui_freq_sink_x_0
   id: qtgui_freq_sink_x
   parameters:
@@ -514,7 +513,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1656, 100.0]
+    coordinate: [1688, 100.0]
     rotation: 0
     state: enabled
 - name: qtgui_freq_sink_x_0_0
@@ -734,8 +733,8 @@ blocks:
     marker9: '-1'
     name: '""'
     nconnections: '1'
-    size: '1024'
-    srate: samp_rate
+    size: 1000*interp_1*interp_2*interp_3
+    srate: samp_rate*interp_1*interp_2*interp_3
     stemplot: 'False'
     style1: '1'
     style10: '1'
@@ -931,14 +930,14 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1656, 188.0]
+    coordinate: [1688, 188.0]
     rotation: 0
     state: enabled
 
 connections:
-- [analog_const_source_x_0, '0', interp_fir_filter_xxx_0, '0']
 - [analog_frequency_modulator_fc_0, '0', blocks_throttle2_0, '0']
-- [analog_noise_source_x_0, '0', interp_fir_filter_xxx_0, '0']
+- [analog_frequency_modulator_fc_0, '0', qtgui_freq_sink_x_0, '0']
+- [analog_frequency_modulator_fc_0, '0', qtgui_waterfall_sink_x_0, '0']
 - [analog_noise_source_x_0, '0', qtgui_freq_sink_x_1, '0']
 - [analog_noise_source_x_0, '0', qtgui_time_sink_x_1, '0']
 - [blocks_file_source_0, '0', blocks_short_to_float_0, '0']
@@ -947,13 +946,11 @@ connections:
 - [blocks_multiply_const_vxx_0_1, '0', analog_frequency_modulator_fc_0, '0']
 - [blocks_multiply_const_vxx_0_1, '0', qtgui_freq_sink_x_0_0, '0']
 - [blocks_multiply_const_vxx_0_1, '0', qtgui_time_sink_x_0, '0']
-- [blocks_short_to_float_0, '0', interp_fir_filter_xxx_0, '0']
+- [blocks_short_to_float_0, '0', interp_fir_filter_xxx_0_2, '0']
 - [blocks_throttle2_0, '0', network_udp_sink_0, '0']
-- [blocks_throttle2_0, '0', qtgui_freq_sink_x_0, '0']
-- [blocks_throttle2_0, '0', qtgui_waterfall_sink_x_0, '0']
-- [interp_fir_filter_xxx_0, '0', blocks_multiply_const_vxx_0, '0']
 - [interp_fir_filter_xxx_0_0, '0', blocks_multiply_const_vxx_0_0, '0']
 - [interp_fir_filter_xxx_0_1, '0', blocks_multiply_const_vxx_0_1, '0']
+- [interp_fir_filter_xxx_0_2, '0', blocks_multiply_const_vxx_0, '0']
 
 metadata:
   file_format: 1
