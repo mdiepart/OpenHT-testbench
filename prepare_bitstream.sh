@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm bitstream/*
+rm -f bitstream/*
 cp ./vivado/OpenHT_testbench/OpenHT_testbench.runs/impl_1/testbench_wrapper.bit bitstream/openht.bit
 cp ./vivado/OpenHT_testbench/OpenHT_testbench.runs/impl_1/testbench_wrapper.ltx bitstream/openht.ltx
 cp ./vivado/OpenHT_testbench/OpenHT_testbench.gen/sources_1/bd/testbench/hw_handoff/testbench.hwh bitstream/openht.hwh
